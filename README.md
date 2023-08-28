@@ -2,6 +2,14 @@
 
 <center>
 
+<img src="res/icon.svg" width=80>
+
+[中文文档](/README-zh.md)
+
+</center>
+
+<center>
+
 <a href="https://marketplace.visualstudio.com/items?itemName=daodaolea.tree-log" target="__blank"><img src="https://img.shields.io/visual-studio-marketplace/v/daodaolea.tree-log.svg?color=eee&amp;label=VS%20Code%20Marketplace&logo=visual-studio-code" alt="Visual Studio Marketplace Version" /></a>
 
 </center>

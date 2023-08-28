@@ -1,9 +1,9 @@
 import * as vscode from 'vscode'
+
 import { getRandomEmoji } from './util'
 
-const editor = vscode.window.activeTextEditor
-
 export function addLog() {
+  const editor = vscode.window.activeTextEditor
   if (!editor)
     return
 
@@ -11,14 +11,13 @@ export function addLog() {
   const selectRanges = editor.selections
   selectRanges.forEach((range) => {
     let text = editor.document.getText(range)
-    let insertText = 'console.log('
     if (text) {
       text = text.replace(/'/g, '"')
       const suffix = vscode.workspace.getConfiguration().get('tree-log.suffix')
       const emoji = getRandomEmoji()
-      insertText = `console.log(' ${suffix || emoji}', '\\n', '├──', '${text}', '\\n', '└──', ${text}, '\\n')`
+      const insertText = `console.log(' ${suffix || emoji}', '\\n', '├──', '${text}', '\\n', '└──', ${text}, '\\n')`
+      textArray.push(insertText)
     }
-    textArray.push(insertText)
   })
 
   vscode.commands.executeCommand('editor.action.insertLineAfter')
@@ -38,6 +37,7 @@ export function addLog() {
 }
 
 export function deleteLog() {
+  const editor = vscode.window.activeTextEditor
   const logRegex = /(console.(log|debug|info|warn|error|assert|dir|dirxml|trace|group|groupEnd|time|timeEnd|profile|profileEnd|count)\((.*)\)| log\((.*)\));?/g
   if (!editor)
     return
