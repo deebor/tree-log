@@ -2,7 +2,7 @@
   "publisher": "daodaolea",
   "name": "tree-log",
   "displayName": "Tree Log",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "packageManager": "pnpm@8.6.0",
   "description": "A plugin that automatically generates console.log statements in tree format",
   "author": "DaoDaoLee <im@daodaolee.cn>",
