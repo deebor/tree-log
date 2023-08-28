@@ -1,24 +1,19 @@
 {
-  "publisher": "antfu",
-  "name": "ext-name",
-  "displayName": "ext-name",
-  "version": "0.0.0",
-  "private": true,
+  "publisher": "daodaolea",
+  "name": "tree-log",
+  "displayName": "Tree Log",
+  "version": "0.0.1",
   "packageManager": "pnpm@8.6.0",
-  "description": "",
-  "author": "Anthony Fu <anthonyfu117@hotmail.com>",
+  "description": "A plugin that automatically generates console.log statements in tree format",
+  "author": "DaoDaoLee <im@daodaolee.cn>",
   "license": "MIT",
-  "funding": "https://github.com/sponsors/antfu",
-  "homepage": "https://github.com/antfu/ext-name#readme",
+  "homepage": "https://github.com/deebor/tree-log#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/antfu/ext-name"
+    "url": "https://github.com/deebor/tree-log"
   },
   "bugs": {
-    "url": "https://github.com/antfu/ext-name/issues"
-  },
-  "sponsor": {
-    "url": "https://github.com/sponsors/antfu"
+    "url": "https://github.com/deebor/tree-log/issues"
   },
   "categories": [
     "Other"
@@ -29,11 +24,70 @@
     "dist"
   ],
   "engines": {
-    "vscode": "^1.78.1"
+    "vscode": "^1.81.1"
   },
   "activationEvents": [
     "onStartupFinished"
   ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "tree-log.addLog",
+        "title": "Add Tree Log"
+      },
+      {
+        "command": "tree-log.deleteLog",
+        "title": "Delete Tree Log"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "tree-log.addLog",
+        "key": "alt+c",
+        "mac": "alt+c",
+        "when": "editorFocus"
+      },
+      {
+        "command": "tree-log.deleteLog",
+        "key": "ctrl+alt+c",
+        "mac": "ctrl+alt+c"
+      }
+    ],
+    "submenus": [
+      {
+        "id": "treelog",
+        "label": "Tree Log"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "submenu": "treelog",
+          "group": "6_px"
+        }
+      ],
+      "treelog": [
+        {
+          "command": "tree-log.addLog"
+        },
+        {
+          "command": "tree-log.deleteLog"
+        }
+      ]
+    },
+    "configuration": [
+      {
+        "title": "Add Console Params",
+        "properties": {
+          "tree-log.suffix": {
+            "type": "string",
+            "default": "",
+            "description": "The log top prefix"
+          }
+        }
+      }
+    ]
+  },
   "scripts": {
     "build": "tsup src/index.ts --external vscode",
     "dev": "nr build --watch",
