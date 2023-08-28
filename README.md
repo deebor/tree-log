@@ -2,7 +2,7 @@
 
 <center>
 
-<img src="res/icon.svg" width=80>
+<img src="res/icon.png" width=80>
 
 [中文文档](/README-zh.md)
 
